@@ -1,0 +1,979 @@
+/* =========================================================
+   Reset & Base
+   ========================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  background: #f4f6f9;
+  color: #212529;
+}
+
+a {
+  color: #1a6fc4;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* =========================================================
+   Layout
+   ========================================================= */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+main.container {
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+/* =========================================================
+   NavBar
+   ========================================================= */
+.navbar {
+  background: #1e293b;
+  color: #f1f5f9;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 52px;
+}
+
+.navbar-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: .01em;
+}
+.navbar-brand:hover { text-decoration: none; color: #94d2ff; }
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .9rem;
+  color: #cbd5e1;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: .45rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: .875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, opacity .15s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+
+.btn-primary {
+  background: #1a6fc4;
+  color: #fff;
+  border-color: #1a6fc4;
+}
+.btn-primary:hover:not(:disabled) { background: #155fa0; border-color: #155fa0; }
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: #334155;
+  border-color: #cbd5e1;
+}
+.btn-secondary:hover:not(:disabled) { background: #e2e8f0; }
+
+.btn-danger {
+  background: #dc2626;
+  color: #fff;
+  border-color: #dc2626;
+}
+.btn-danger:hover:not(:disabled) { background: #b91c1c; border-color: #b91c1c; }
+
+.btn-sm {
+  padding: .3rem .7rem;
+  font-size: .8rem;
+}
+
+.btn-full { width: 100%; }
+
+/* =========================================================
+   Card
+   ========================================================= */
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+/* =========================================================
+   Forms
+   ========================================================= */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="email"] {
+  width: 100%;
+  padding: .5rem .75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: .9rem;
+  background: #fff;
+  color: #111;
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus {
+  outline: none;
+  border-color: #1a6fc4;
+  box-shadow: 0 0 0 3px rgba(26,111,196,.15);
+}
+input::placeholder { color: #9ca3af; }
+input:disabled { background: #f3f4f6; color: #6b7280; cursor: not-allowed; }
+
+.form-actions {
+  display: flex;
+  gap: .5rem;
+  margin-top: .25rem;
+}
+
+/* =========================================================
+   Error / Status
+   ========================================================= */
+.error-msg {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  border-radius: 6px;
+  padding: .5rem .75rem;
+  font-size: .875rem;
+  margin-bottom: .75rem;
+}
+
+.empty-state {
+  text-align: center;
+  color: #6b7280;
+  padding: 3rem 1rem;
+  font-size: 1rem;
+}
+
+.saving-indicator {
+  font-size: .7rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* =========================================================
+   Page Headers
+   ========================================================= */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.page-header h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: .85rem;
+  color: #64748b;
+  margin-bottom: .35rem;
+}
+.back-link:hover { color: #1a6fc4; }
+
+/* =========================================================
+   Login Page
+   ========================================================= */
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 52px);
+  padding: 2rem 1rem;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-card h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: .25rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #6b7280;
+  font-size: .9rem;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================================================
+   Dashboard
+   ========================================================= */
+.dashboard {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.create-form {
+  margin-bottom: 1.5rem;
+}
+
+.create-form h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.comparison-list {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.comparison-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  flex-wrap: wrap;
+}
+
+.comparison-info {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.comparison-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1a6fc4;
+}
+
+.comparison-meta {
+  font-size: .8rem;
+  color: #6b7280;
+}
+
+.comparison-actions {
+  display: flex;
+  gap: .5rem;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   Comparison View
+   ========================================================= */
+.comparison-view {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.boat-manager {
+  margin-bottom: 1.5rem;
+}
+
+.boat-tabs {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.boat-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+  border-radius: 20px;
+  padding: .25rem .75rem;
+  font-size: .875rem;
+  font-weight: 500;
+  color: #0369a1;
+}
+
+.remove-boat {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0369a1;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0 .1rem;
+  opacity: .7;
+}
+.remove-boat:hover { opacity: 1; color: #dc2626; }
+
+.add-boat-form {
+  display: flex;
+  gap: .4rem;
+  align-items: center;
+}
+
+.add-boat-form input {
+  width: 180px;
+  padding: .3rem .6rem;
+  font-size: .85rem;
+}
+
+.max-boats-note {
+  font-size: .8rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* =========================================================
+   Scoring Grid
+   ========================================================= */
+.scoring-grid-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.scoring-grid {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .875rem;
+}
+
+.scoring-grid th,
+.scoring-grid td {
+  border: 1px solid #e2e8f0;
+  padding: .5rem .75rem;
+  vertical-align: middle;
+}
+
+.scoring-grid thead th {
+  background: #1e293b;
+  color: #f1f5f9;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+}
+
+.question-col {
+  min-width: 340px;
+  text-align: left !important;
+}
+
+.boat-score-col {
+  min-width: 100px;
+  text-align: center;
+}
+
+.section-header-row td {
+  background: #f1f5f9;
+  font-weight: 700;
+  color: #1e293b;
+  padding: .6rem .75rem;
+}
+
+.section-weight {
+  font-weight: 400;
+  color: #64748b;
+  font-size: .8rem;
+  margin-left: .5rem;
+}
+
+.question-text {
+  color: #374151;
+  text-align: left;
+}
+
+.q-num {
+  font-size: .75rem;
+  font-weight: 700;
+  color: #9ca3af;
+  margin-right: .3rem;
+}
+
+.score-input-cell {
+  text-align: center;
+  padding: .35rem .5rem;
+}
+
+.score-input {
+  width: 56px;
+  text-align: center;
+  padding: .3rem .25rem;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: .875rem;
+  font-weight: 600;
+}
+
+.score-display {
+  font-size: .9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Score colour coding */
+.score-red .score-input,
+.score-red .score-display {
+  background: #fef2f2;
+  border-color: #fca5a5;
+  color: #991b1b;
+}
+.score-red { background: #fff5f5; }
+
+.score-yellow .score-input,
+.score-yellow .score-display {
+  background: #fffbeb;
+  border-color: #fcd34d;
+  color: #92400e;
+}
+.score-yellow { background: #fffef0; }
+
+/* =========================================================
+   Weighted Table
+   ========================================================= */
+.weighted-table-wrapper {
+  overflow-x: auto;
+}
+
+.weighted-score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .875rem;
+}
+
+.weighted-score-table th,
+.weighted-score-table td {
+  border: 1px solid #e2e8f0;
+  padding: .6rem .9rem;
+  vertical-align: middle;
+}
+
+.weighted-score-table thead th {
+  background: #1e293b;
+  color: #f1f5f9;
+  font-weight: 600;
+  text-align: center;
+}
+
+.weighted-score-table thead th:first-child {
+  text-align: left;
+}
+
+.weight-cell {
+  text-align: center;
+  font-size: .8rem;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.score-cell {
+  text-align: center;
+}
+
+.weighted-score {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.raw-avg {
+  display: block;
+  font-size: .75rem;
+  color: #64748b;
+}
+
+.scored-count {
+  display: block;
+  font-size: .72rem;
+  color: #94a3b8;
+}
+
+.unscored {
+  color: #9ca3af;
+  font-size: .9rem;
+}
+
+.section-informational td {
+  background: #fafafa;
+  color: #6b7280;
+}
+
+.total-row td {
+  background: #f1f5f9;
+  font-size: 1rem;
+}
+
+.total-cell {
+  text-align: center;
+}
+
+.total-cell strong {
+  font-size: 1.15rem;
+  color: #0f172a;
+}
+
+.total-cell small {
+  font-size: .8rem;
+  color: #64748b;
+}
+
+/* score coloring in weighted table */
+.score-red { background: #fff5f5; }
+.score-green { background: #f0fdf4; }
+.score-yellow { background: #fffbeb; }
+
+/* =========================================================
+   Results Card
+   ========================================================= */
+.results-card {
+  margin-top: 1.5rem;
+}
+
+.results-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+/* =========================================================
+   Share Link
+   ========================================================= */
+.share-link-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  min-width: 320px;
+}
+
+.share-link-box label {
+  display: block;
+  font-size: .78rem;
+  color: #64748b;
+  margin-bottom: .4rem;
+}
+
+.share-link-row {
+  display: flex;
+  gap: .5rem;
+}
+
+.share-link-row input {
+  flex: 1;
+  font-size: .8rem;
+  background: #fff;
+  color: #374151;
+  padding: .35rem .6rem;
+}
+
+/* =========================================================
+   Share View
+   ========================================================= */
+.share-view {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.share-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 2rem 0 1rem;
+}
+
+.share-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.share-meta {
+  font-size: .85rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.share-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: #f0f9ff;
+  border-radius: 10px;
+  border: 1px solid #bae6fd;
+}
+
+.share-cta p {
+  margin-bottom: .75rem;
+  color: #374151;
+}
+
+/* =========================================================
+   Scoring legend
+   ========================================================= */
+.scoring-legend {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  padding: .55rem 1rem;
+  font-size: .875rem;
+  color: #334155;
+  margin-bottom: .75rem;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+
+.legend-bad {
+  font-weight: 700;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 4px;
+  padding: .1rem .4rem;
+}
+
+.legend-good {
+  font-weight: 700;
+  color: #15803d;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 4px;
+  padding: .1rem .4rem;
+}
+
+.legend-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1a6fc4;
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* =========================================================
+   Tooltip
+   ========================================================= */
+.tooltip-wrap {
+  display: inline-flex;
+  align-items: center;
+  margin-left: .35rem;
+  vertical-align: middle;
+  cursor: default;
+}
+
+.tooltip-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  color: #1e293b;
+  font-size: .65rem;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.tooltip-wrap:hover .tooltip-icon,
+.tooltip-wrap:focus .tooltip-icon {
+  background: #1a6fc4;
+  color: #fff;
+}
+
+.tooltip-box {
+  width: 300px;
+  background: #1e293b;
+  color: #f1f5f9;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  font-size: .8rem;
+  line-height: 1.5;
+  box-shadow: 0 4px 20px rgba(0,0,0,.35);
+  pointer-events: none;
+}
+
+.tooltip-box p {
+  margin: 0 0 .4rem;
+  padding-left: .6rem;
+  border-left: 3px solid #475569;
+}
+.tooltip-box p:last-child { margin-bottom: 0; }
+
+.tip-good   { border-left-color: #22c55e !important; }
+.tip-avoid  { border-left-color: #ef4444 !important; }
+.tip-caution { border-left-color: #f59e0b !important; }
+.tip-info   { border-left-color: #38bdf8 !important; }
+.tip-neutral { border-left-color: #475569 !important; }
+
+/* =========================================================
+   Score validation
+   ========================================================= */
+.score-input.score-invalid {
+  border-color: #ef4444;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.score-error-tip {
+  display: block;
+  font-size: .65rem;
+  color: #ef4444;
+  font-weight: 600;
+  text-align: center;
+  margin-top: .1rem;
+  line-height: 1;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+/* =========================================================
+   PDF download button
+   ========================================================= */
+.pdf-actions {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* =========================================================
+   Print / PDF styles
+   ========================================================= */
+@media print {
+  /* Hide everything interactive */
+  .navbar,
+  .boat-manager,
+  .back-link,
+  .share-link-box,
+  .scoring-legend,
+  .pdf-actions,
+  .share-cta,
+  .saving-indicator,
+  .tooltip-wrap {
+    display: none !important;
+  }
+
+  /* Reset page chrome */
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  main.container {
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* Page header: just the title */
+  .page-header {
+    margin-bottom: 1rem;
+  }
+
+  .page-header h2,
+  .share-view h2 {
+    font-size: 16pt;
+    font-weight: 700;
+  }
+
+  .share-header {
+    text-align: left;
+    padding: 0 0 .5rem;
+  }
+
+  .share-header h1 {
+    font-size: 14pt;
+  }
+
+  .share-meta {
+    font-size: 9pt;
+    color: #555;
+  }
+
+  /* Card: remove shadow for print */
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  /* Scoring grid: make inputs look like plain numbers */
+  .scoring-grid-wrapper {
+    overflow: visible;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+  }
+
+  .scoring-grid,
+  .weighted-score-table {
+    font-size: 9pt;
+    width: 100%;
+  }
+
+  .scoring-grid th,
+  .scoring-grid td,
+  .weighted-score-table th,
+  .weighted-score-table td {
+    border: 1px solid #bbb;
+    padding: 4px 6px;
+  }
+
+  .scoring-grid thead th,
+  .weighted-score-table thead th {
+    background: #333 !important;
+    color: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .section-header-row td {
+    background: #eee !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Render score inputs as plain numbers */
+  .score-input {
+    border: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    width: auto;
+    text-align: center;
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 0;
+    -moz-appearance: textfield;
+  }
+  .score-input::-webkit-outer-spin-button,
+  .score-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  /* Preserve score colour coding in print */
+  .score-red {
+    background: #ffe4e4 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .score-yellow {
+    background: #fff8e1 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Weighted table */
+  .results-card {
+    margin-top: 1rem;
+    break-before: auto;
+  }
+
+  .results-card h3 {
+    font-size: 12pt;
+    margin-bottom: .5rem;
+  }
+
+  .total-row td {
+    background: #eee !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Add comparison URL as footer */
+  .comparison-view::after,
+  .share-view::after {
+    content: "Printed from svCompare · " attr(data-url);
+    display: block;
+    font-size: 8pt;
+    color: #888;
+    margin-top: 1.5rem;
+    border-top: 1px solid #ddd;
+    padding-top: .5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header {
+    flex-direction: column;
+  }
+
+  .comparison-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .share-link-box {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .login-card {
+    padding: 1.25rem;
+  }
+}

@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_PATH=/data/svcompare.db
+      - JWT_SECRET=change-this-secret-in-production
+      - GO_ENV=production
+      - PORT=8080
+      # Optional: override the default admin credentials
+      # - SEED_ADMIN_USERNAME=admin
+      # - SEED_ADMIN_PASSWORD=admin
+    volumes:
+      - sqlite_data:/data
+    restart: unless-stopped
+
+volumes:
+  sqlite_data:

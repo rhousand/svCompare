@@ -1,0 +1,22 @@
+# Build artifacts
+backend/frontend/dist/
+backend/tmp/
+frontend/dist/
+frontend/node_modules/
+
+# Runtime data
+data/
+
+# Go
+backend/build-errors.log
+*.test
+
+# Nix
+result
+result-*
+
+# direnv
+.direnv/
+
+# Editor
+.DS_Store
